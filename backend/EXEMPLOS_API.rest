@@ -1,0 +1,108 @@
+# Exemplos de Requisições HTTP - Monetra Backend API
+# Use com cURL ou importe em ferramentas como Postman, Insomnia, etc.
+
+###############################################
+# 1. LISTAR TODAS AS TRANSAÇÕES
+###############################################
+GET http://localhost:8080/api/transactions
+
+###############################################
+# 2. OBTER TRANSAÇÃO POR ID
+###############################################
+GET http://localhost:8080/api/transactions/1
+
+###############################################
+# 3. CRIAR NOVA TRANSAÇÃO
+###############################################
+POST http://localhost:8080/api/transactions
+Content-Type: application/json
+
+{
+  "description": "Compra no mercado",
+  "category": "Alimentação",
+  "amount": 85.50,
+  "type": "DESPESA"
+}
+
+###############################################
+# 4. CRIAR OUTRA TRANSAÇÃO (RECEITA)
+###############################################
+POST http://localhost:8080/api/transactions
+Content-Type: application/json
+
+{
+  "description": "Freelance - Projeto Web",
+  "category": "Renda Adicional",
+  "amount": 1500.00,
+  "type": "RECEITA"
+}
+
+###############################################
+# 5. ATUALIZAR TRANSAÇÃO
+###############################################
+PUT http://localhost:8080/api/transactions/1
+Content-Type: application/json
+
+{
+  "amount": 95.00,
+  "category": "Supermercado"
+}
+
+###############################################
+# 6. DELETAR TRANSAÇÃO
+###############################################
+DELETE http://localhost:8080/api/transactions/2
+
+###############################################
+# 7. OBTER RESUMO FINANCEIRO
+###############################################
+GET http://localhost:8080/api/transactions/summary
+
+###############################################
+# 8. FILTRAR TRANSAÇÕES POR CATEGORIA
+###############################################
+GET http://localhost:8080/api/transactions/category/Alimentação
+
+###############################################
+# 9. FILTRAR TRANSAÇÕES POR TIPO
+###############################################
+GET http://localhost:8080/api/transactions/type/RECEITA
+
+###############################################
+# 10. HEALTH CHECK
+###############################################
+GET http://localhost:8080/api/transactions/health
+
+###############################################
+# EXEMPLOS COM CURL
+###############################################
+
+# Listar transações
+# curl http://localhost:8080/api/transactions
+
+# Criar transação
+# curl -X POST http://localhost:8080/api/transactions \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "description": "Curso Online",
+#     "category": "Educação",
+#     "amount": 199.90,
+#     "type": "DESPESA"
+#   }'
+
+# Obter resumo
+# curl http://localhost:8080/api/transactions/summary
+
+# Atualizar
+# curl -X PUT http://localhost:8080/api/transactions/1 \
+#   -H "Content-Type: application/json" \
+#   -d '{"amount": 120.00}'
+
+# Deletar
+# curl -X DELETE http://localhost:8080/api/transactions/1
+
+# Filtrar por categoria
+# curl "http://localhost:8080/api/transactions/category/Educação"
+
+# Filtrar por tipo
+# curl "http://localhost:8080/api/transactions/type/RECEITA"

@@ -13,6 +13,10 @@ export function Input({ placeholderTextColor, ...rest }: TextInputProps) {
             style={styles.input}
             // Se não passar uma cor específica, usa o cinza claro do tema
             placeholderTextColor={placeholderTextColor || colors.textSecondary}
+            // Propriedades importantes para funcionamento em web
+            autoCorrect={false}
+            autoCapitalize="none"
+            selectionColor={colors.primary}
             {...rest} 
         />
     )
@@ -28,7 +32,9 @@ const styles = StyleSheet.create({
         borderRadius: 8,         // Bordas arredondadas
         fontSize: 16,            // Tamanho da fonte
         paddingLeft: 12,         // Espaçamento interno esquerdo
-        color: colors.white,     // COR DO TEXTO DIGITADO - BRANCO (visível no fundo escuro)
+        paddingRight: 12,        // Espaçamento interno direito
+        color: colors.text,      // COR DO TEXTO DIGITADO - Cinza claro
         backgroundColor: colors.card, // FUNDO DO INPUT - CINZA ESCURO
-    },
+        outlineStyle: "none",    // Remove borda padrão do input web
+    } as any, // 'as any' para aceitar propriedades web
 })
