@@ -1,6 +1,3 @@
-Aqui está o README.md completo e bem formatado, com base nas informações fornecidas:
-
-```markdown
 # 🧾 Monetra
 
 > Controle financeiro simples, inteligente e acessível.
